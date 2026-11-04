@@ -1,0 +1,70 @@
+// storage.rules
+// Deploy with: firebase deploy --only storage
+
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ── Helper ──
+   function isAdmin() {
+  return request.auth != null
+    && request.auth.token.email == "darshhugawade3@gmail.com"
+    && request.auth.token.email_verified == true;
+}
+
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    function isDocument() {
+      return request.resource.contentType.matches('application/pdf')
+          || request.resource.contentType.matches('application/.*powerpoint.*')
+          || request.resource.contentType.matches('application/.*word.*')
+          || request.resource.contentType.matches('application/.*presentation.*');
+    }
+
+    function isAllowedFile() {
+      return isImage() || isDocument();
+    }
+
+    function maxSize(mb) {
+      return request.resource.size < mb * 1024 * 1024;
+    }
+
+    // ── Profile photo (public read, admin write) ──
+    match /profile/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin() && isImage() && maxSize(5);
+    }
+
+    // ── Resume ──
+    match /resume/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin() && maxSize(10);
+    }
+
+    // ── Projects ──
+    match /projects/{projectId}/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin() && isAllowedFile() && maxSize(50);
+    }
+
+    // ── Certificates ──
+    match /certificates/{certId}/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin() && isAllowedFile() && maxSize(20);
+    }
+
+    // ── Gallery ──
+    match /gallery/{albumId}/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin() && isImage() && maxSize(15);
+    }
+
+    // ── Research ──
+    match /research/{resId}/{fileName} {
+      allow read: if true;
+      allow write: if isAdmin() && isAllowedFile() && maxSize(50);
+    }
+  }
+}

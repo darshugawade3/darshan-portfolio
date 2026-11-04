@@ -1,0 +1,80 @@
+// firestore.rules
+// ─────────────────────────────────────────────────────────────
+// Deploy with: firebase deploy --only firestore:rules
+// ─────────────────────────────────────────────────────────────
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helper: is the requester a signed-in admin? ──
+   function isAdmin() {
+  return request.auth != null
+    && request.auth.token.email == "darshhugawade3@gmail.com"
+    && request.auth.token.email_verified == true;
+}
+
+    // ── PUBLIC READ collections ──
+    // Anyone can read portfolio data; only admins can write
+
+    match /config/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /education/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /skills/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /projects/{docId} {
+      allow read: if true;
+      // Public can increment viewCount only
+      allow update: if !isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(["viewCount"])
+        && request.resource.data.viewCount == resource.data.viewCount + 1;
+      allow write: if isAdmin();
+    }
+
+    match /certificates/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /gallery/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /gallery_albums/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /research/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /achievements/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ── CONTACT MESSAGES ──
+    // Public can create (submit form); only admins can read/update/delete
+    match /messages/{docId} {
+      allow create: if true
+        && request.resource.data.keys().hasAll(["name", "email", "subject", "message", "createdAt"])
+        && request.resource.data.name is string
+        && request.resource.data.email is string
+        && request.resource.data.message.size() <= 2000;
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}
