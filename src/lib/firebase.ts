@@ -1,4 +1,4 @@
-```ts
+
 // src/lib/firebase.ts
 
 import { initializeApp, getApps, FirebaseApp } from "firebase/app";
@@ -48,4 +48,3 @@ export const getAnalyticsInstance = async (): Promise<Analytics | null> => {
 };
 
 export default app;
-```
