@@ -1,8 +1,5 @@
+```ts
 // src/lib/firebase.ts
-// ─────────────────────────────────────────────────────────────
-// Firebase configuration — values come from environment variables
-// Set these in your .env.local file (see .env.example)
-// ─────────────────────────────────────────────────────────────
 
 import { initializeApp, getApps, FirebaseApp } from "firebase/app";
 import { getAuth, Auth } from "firebase/auth";
@@ -11,18 +8,32 @@ import { getStorage, FirebaseStorage } from "firebase/storage";
 import { getAnalytics, Analytics, isSupported } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY?.trim(),
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN?.trim(),
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID?.trim(),
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET?.trim(),
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID?.trim(),
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID?.trim(),
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID?.trim(),
 };
 
-// Prevent duplicate initialization in Next.js dev mode
+// Validate required Firebase configuration
+if (
+  !firebaseConfig.apiKey ||
+  !firebaseConfig.authDomain ||
+  !firebaseConfig.projectId ||
+  !firebaseConfig.appId
+) {
+  throw new Error(
+    "Firebase configuration missing. Check Vercel Environment Variables."
+  );
+}
+
+// Prevent duplicate initialization
 const app: FirebaseApp =
-  getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+  getApps().length === 0
+    ? initializeApp(firebaseConfig)
+    : getApps()[0];
 
 export const auth: Auth = getAuth(app);
 export const db: Firestore = getFirestore(app);
@@ -37,3 +48,4 @@ export const getAnalyticsInstance = async (): Promise<Analytics | null> => {
 };
 
 export default app;
+```
