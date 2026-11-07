@@ -7,7 +7,7 @@ import { useAuth } from "@/lib/auth-context";
 import { messagesService } from "@/lib/db";
 import {
   LayoutDashboard, User, GraduationCap, Zap, FolderOpen,
-  Award, Image, BookOpen, FileText, MessageSquare, LogOut,
+ Award, Trophy, Image, BookOpen, FileText, MessageSquare, LogOut,
   Menu, X, ChevronRight,
 } from "lucide-react";
 
@@ -18,6 +18,7 @@ const NAV = [
   { href: "/admin/skills", label: "Skills", icon: Zap },
   { href: "/admin/projects", label: "Projects", icon: FolderOpen },
   { href: "/admin/certificates", label: "Certificates", icon: Award },
+  { href: "/admin/achievements", label: "Achievements & Awards", icon: Trophy },
   { href: "/admin/gallery", label: "Gallery", icon: Image },
   { href: "/admin/research", label: "Research", icon: BookOpen },
   { href: "/admin/resume", label: "Resume", icon: FileText },

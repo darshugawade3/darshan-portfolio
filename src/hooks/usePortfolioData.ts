@@ -161,5 +161,5 @@ export function useAchievements() {
 
   useEffect(() => { load(); }, [load]);
 
-  return { achievements, loading };
+  return { achievements, loading, refresh: load };
 }

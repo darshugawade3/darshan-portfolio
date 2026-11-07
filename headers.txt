@@ -1,0 +1,72 @@
+HTTP/1.1 302 Found
+Cache-Control: no-store, max-age=0
+Content-Type: text/plain
+Date: Fri, 06 Nov 2026 21:45:09 GMT
+Location: https://vercel.com/sso-api?url=https%3A%2F%2Fdarshan-portfolio-qtl4wqct5-darshugawade3.vercel.app%2F&nonce=a896ee1947feabd896fdaa0d3cd58e90bb847db78014e634da936f5a57ecb095
+Server: Vercel
+Set-Cookie: _vercel_sso_nonce=5c4b1c06cf6b161cc1e1cd4d28dd6a73c717c5a0f40f4a21; Max-Age=3600; Path=/; Secure; HttpOnly; SameSite=Lax
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Frame-Options: DENY
+X-Robots-Tag: noindex
+X-Vercel-Id: bom1::979wr-1794001509547-c70f990c4e0d
+Transfer-Encoding: chunked
+
+HTTP/1.1 307 Temporary Redirect
+Age: 0
+Cache-Control: public, max-age=0, must-revalidate
+Content-Length: 0
+Content-Security-Policy: default-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live localhost:* chrome-extension://*;script-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live localhost:* chrome-extension://* va.vercel-scripts.com *.fides-cdn.ethyca.com si-next.vercel-scripts.com 'unsafe-eval' 'unsafe-inline' blob: https://*.stripe.com https://accounts.google.com/gsi/client *.googleapis.com cdp.vercel.com;style-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live localhost:* chrome-extension://* 'unsafe-inline' https://accounts.google.com/gsi/style https://fonts.googleapis.com;img-src 'self' blob: data: vercel.com *.vercel.sh vercel.live *.vercel.com https://flag.vercel.app https://avatars.githubusercontent.com https://cdn.jsdelivr.net https://prod-uk-services-workspac-workspacefilespublicbuck-vs4gjqpqjkh6.s3.amazonaws.com https://vercel.com https://api-frameworks.vercel.sh https://api.vercel.com https://github.com https://images.ctfassets.net https://og-image.vercel.app https://cdn.cosmicjs.com https://cdn.raster.app https://img.youtube.com https://raw.githubusercontent.com https://www.datocms-assets.com https://t3.gstatic.com https://dmmcy0pwk6bqi.cloudfront.net https://basehub.earth https://7nyt0uhk7sse4zvn.public.blob.vercel-storage.com https://lishhsx6kmthaacj.public.blob.vercel-storage.com https://myyiyhf3s6nwxrpk.public.blob.vercel-storage.com https://fvqcrhkhgatlyl2m.public.blob.vercel-storage.com https://py8fhxnkzwtsqdo9.public.blob.vercel-storage.com https://*.stripe.com *.public.blob.vercel-storage.com *.private.blob.vercel-storage.com;media-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live localhost:* chrome-extension://* blob: data: videos.ctfassets.net user-images.githubusercontent.com *.public.blob.vercel-storage.com *.private.blob.vercel-storage.com;connect-src data: * wss://ws-us3.pusher.com cdp.vercel.com;font-src 'self' vercel.live *.vercel.com https://fonts.gstatic.com;child-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live localhost:* chrome-extension://* *.tmp.now https://www.youtube.com https://*.stripe.com https://accounts.google.com/gsi/;worker-src 'self' blob:;frame-ancestors 'self' https://vercel.com https://app.contentful.com https://*.contentful.com https://*.vercel.sh https://*.vercel.com;
+Cross-Origin-Opener-Policy: restrict-properties
+Date: Fri, 06 Nov 2026 21:45:10 GMT
+Feature-Policy: fullscreen 'self'; camera 'none'
+Location: /login?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Fdarshan-portfolio-qtl4wqct5-darshugawade3.vercel.app%252F%26nonce%3Da896ee1947feabd896fdaa0d3cd58e90bb847db78014e634da936f5a57ecb095
+Referrer-Policy: origin-when-cross-origin
+Server: Vercel
+Set-Cookie: _v-visitor-id=p0Klm5CigCRe5MfVOorrd; Path=/; Expires=Thu, 04 Feb 2027 21:45:09 GMT; Max-Age=7776000; Domain=.vercel.com; Secure; SameSite=lax
+Set-Cookie: _v-visitor-id-renewed=1; Path=/; Expires=Sat, 07 Nov 2026 21:45:09 GMT; Max-Age=86400; Domain=.vercel.com; Secure; SameSite=lax
+Set-Cookie: _v-consent=%7B%22essential%22%3Atrue%2C%22analytics%22%3Atrue%2C%22marketing%22%3Atrue%2C%22functional%22%3Atrue%2C%22version%22%3A1%7D; Path=/; Expires=Sat, 06 Nov 2027 21:45:09 GMT; Max-Age=31536000; Domain=.vercel.com; Secure; SameSite=lax
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+X-Dns-Prefetch-Control: on
+X-Download-Options: noopen
+X-Frame-Options: DENY
+X-Matched-Path: /api/sso
+X-Nextjs-Rewritten-Path: /api/sso
+X-Vercel-Cache: MISS
+X-Vercel-Id: bom1::sfo1::cgv5m-1794001509779-e1e625a11c3f
+X-Xss-Protection: 0
+
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Age: 805
+Cache-Control: public, max-age=0, must-revalidate
+Content-Disposition: inline
+Content-Security-Policy: default-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live localhost:* chrome-extension://*;script-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live localhost:* chrome-extension://* va.vercel-scripts.com *.fides-cdn.ethyca.com si-next.vercel-scripts.com 'unsafe-eval' 'unsafe-inline' blob: https://*.stripe.com https://accounts.google.com/gsi/client *.googleapis.com cdp.vercel.com;style-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live localhost:* chrome-extension://* 'unsafe-inline' https://accounts.google.com/gsi/style https://fonts.googleapis.com;img-src 'self' blob: data: vercel.com *.vercel.sh vercel.live *.vercel.com https://flag.vercel.app https://avatars.githubusercontent.com https://cdn.jsdelivr.net https://prod-uk-services-workspac-workspacefilespublicbuck-vs4gjqpqjkh6.s3.amazonaws.com https://vercel.com https://api-frameworks.vercel.sh https://api.vercel.com https://github.com https://images.ctfassets.net https://og-image.vercel.app https://cdn.cosmicjs.com https://cdn.raster.app https://img.youtube.com https://raw.githubusercontent.com https://www.datocms-assets.com https://t3.gstatic.com https://dmmcy0pwk6bqi.cloudfront.net https://basehub.earth https://7nyt0uhk7sse4zvn.public.blob.vercel-storage.com https://lishhsx6kmthaacj.public.blob.vercel-storage.com https://myyiyhf3s6nwxrpk.public.blob.vercel-storage.com https://fvqcrhkhgatlyl2m.public.blob.vercel-storage.com https://py8fhxnkzwtsqdo9.public.blob.vercel-storage.com https://*.stripe.com *.public.blob.vercel-storage.com *.private.blob.vercel-storage.com;media-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live localhost:* chrome-extension://* blob: data: videos.ctfassets.net user-images.githubusercontent.com *.public.blob.vercel-storage.com *.private.blob.vercel-storage.com;connect-src data: * wss://ws-us3.pusher.com cdp.vercel.com;font-src 'self' vercel.live *.vercel.com https://fonts.gstatic.com;child-src 'self' vercel.com *.vercel.com *.vercel.sh vercel.live localhost:* chrome-extension://* *.tmp.now https://www.youtube.com https://*.stripe.com https://accounts.google.com/gsi/;worker-src 'self' blob:;frame-ancestors 'none';
+Content-Security-Policy-Report-Only: script-src 'none'; connect-src 'none'; report-uri /.well-known/vercel/csp-report?t=eyJ1IjoiXC8ud2VsbC1rbm93blwvdmVyY2VsXC9jc3AtcmVwb3J0IiwiZSI6MTc5NDA4NzkxMCwiaCI6InZlcmNlbC5jb20iLCJkIjoiZHBsXzJTR1Z2Q1N2YUF4Y3hkRWpXM3VacG91NFJxRjEifQ._Sui-_erIa0AHgmwQ99J3LJQUy4nh0c-Fk7hihttUWk; report-to vercel-page-integrity-csp
+Content-Type: text/html; charset=utf-8
+Cross-Origin-Opener-Policy: same-origin-allow-popups
+Date: Fri, 06 Nov 2026 21:45:10 GMT
+Feature-Policy: fullscreen 'self'; camera 'none'
+Link: <https://avatars.githubusercontent.com>; rel=preconnect; crossorigin="", <https://py8fhxnkzwtsqdo9.public.blob.vercel-storage.com>; rel=preconnect; crossorigin="", <https://images.ctfassets.net>; rel=preconnect; crossorigin="", <https://accounts.google.com>; rel=preconnect; crossorigin="", </_next/static/immutable/media/07a39a8a4660cc7c.p.1v5bejj26fx9h.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2", </_next/static/immutable/media/GeistPixel_Square.p.3i-voztpvqxl2.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2", </_next/static/immutable/media/Geist_Variable-s.p.2wz-lhd5-5z0-.woff2>; rel=preload; as="font"; crossorigin=""; type="font/woff2"
+Referrer-Policy: origin-when-cross-origin
+Report-To: {"max_age":86400,"endpoints":[{"url":"https:\/\/vercel.com\/.well-known\/vercel\/csp-report?t=eyJ1IjoiXC8ud2VsbC1rbm93blwvdmVyY2VsXC9jc3AtcmVwb3J0IiwiZSI6MTc5NDA4NzkxMCwiaCI6InZlcmNlbC5jb20iLCJkIjoiZHBsXzJTR1Z2Q1N2YUF4Y3hkRWpXM3VacG91NFJxRjEifQ._Sui-_erIa0AHgmwQ99J3LJQUy4nh0c-Fk7hihttUWk"}],"group":"vercel-page-integrity-csp"}
+Reporting-Endpoints: vercel-page-integrity-csp="https://vercel.com/.well-known/vercel/csp-report?t=eyJ1IjoiXC8ud2VsbC1rbm93blwvdmVyY2VsXC9jc3AtcmVwb3J0IiwiZSI6MTc5NDA4NzkxMCwiaCI6InZlcmNlbC5jb20iLCJkIjoiZHBsXzJTR1Z2Q1N2YUF4Y3hkRWpXM3VacG91NFJxRjEifQ._Sui-_erIa0AHgmwQ99J3LJQUy4nh0c-Fk7hihttUWk"
+Server: Vercel
+Set-Cookie: _v-visitor-id=Xh2lkdn99W8GehwTd07vx; Path=/; Expires=Thu, 04 Feb 2027 21:45:10 GMT; Max-Age=7776000; Domain=.vercel.com; Secure; SameSite=lax
+Set-Cookie: _v-visitor-id-renewed=1; Path=/; Expires=Sat, 07 Nov 2026 21:45:10 GMT; Max-Age=86400; Domain=.vercel.com; Secure; SameSite=lax
+Set-Cookie: _v-consent=%7B%22essential%22%3Atrue%2C%22analytics%22%3Atrue%2C%22marketing%22%3Atrue%2C%22functional%22%3Atrue%2C%22version%22%3A1%7D; Path=/; Expires=Sat, 06 Nov 2027 21:45:10 GMT; Max-Age=31536000; Domain=.vercel.com; Secure; SameSite=lax
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+X-Content-Type-Options: nosniff
+X-Dns-Prefetch-Control: on
+X-Download-Options: noopen
+X-Frame-Options: DENY
+X-Matched-Path: /login
+X-Nextjs-Prerender: 1
+X-Nextjs-Stale-Time: 300
+X-Vercel-Cache: HIT
+X-Vercel-Id: bom1::5g2j2-1794001510428-3130b27d6b91
+X-Xss-Protection: 0
+Transfer-Encoding: chunked
+
