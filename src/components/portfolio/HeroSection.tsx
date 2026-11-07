@@ -121,11 +121,11 @@ export default function HeroSection({ profile }: { profile: Profile | null }) {
             </div>
             <div className="absolute" style={{ bottom: "-8px", left: "-16px", background: "rgba(5,15,30,.9)", border: "1px solid rgba(34,211,238,.2)", backdropFilter: "blur(10px)", borderRadius: "10px", padding: "8px 12px" }}>
               <div style={{ color: "#fbbf24", fontWeight: 700, fontSize: ".75rem", fontFamily: "Exo 2, sans-serif" }}>🔬 B.Pharm</div>
-              <div style={{ color: "#94a3b8", fontSize: ".65rem", fontFamily: "Exo 2, sans-serif" }}>Researcher</div>
+              <div style={{ color: "#94a3b8", fontSize: ".65rem", fontFamily: "Exo 2, sans-serif" }}>First class</div>
             </div>
             <div className="absolute" style={{ top: "-8px", right: "-16px", background: "rgba(5,15,30,.9)", border: "1px solid rgba(34,211,238,.2)", backdropFilter: "blur(10px)", borderRadius: "10px", padding: "8px 12px" }}>
               <div style={{ color: "#22d3ee", fontWeight: 700, fontSize: ".75rem", fontFamily: "Exo 2, sans-serif" }}>📊 Analytics</div>
-              <div style={{ color: "#94a3b8", fontSize: ".65rem", fontFamily: "Exo 2, sans-serif" }}>Power BI · SQL</div>
+              <div style={{ color: "#94a3b8", fontSize: ".65rem", fontFamily: "Exo 2, sans-serif" }}>Python · SQL</div>
             </div>
           </div>
         </div>
