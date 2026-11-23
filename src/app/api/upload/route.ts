@@ -1,16 +1,28 @@
+
 import { v2 as cloudinary } from "cloudinary";
 
+export const runtime = "nodejs";
+
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
-  api_key: process.env.CLOUDINARY_API_KEY!,
-  api_secret: process.env.CLOUDINARY_API_SECRET!,
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 export async function POST(req: Request) {
   try {
+    if (
+      !process.env.CLOUDINARY_CLOUD_NAME ||
+      !process.env.CLOUDINARY_API_KEY ||
+      !process.env.CLOUDINARY_API_SECRET
+    ) {
+      throw new Error("Cloudinary environment variables missing");
+    }
+
     const formData = await req.formData();
 
     const rawFile = formData.get("file");
+    const rawPath = formData.get("path");
     const rawFolder = formData.get("folder");
 
     if (
@@ -25,46 +37,56 @@ export async function POST(req: Request) {
 
     const file = rawFile as File;
 
-    const folder =
-      typeof rawFolder === "string" && rawFolder.length > 0
-        ? rawFolder
-        : "profile";
+    const folderValue =
+      typeof rawPath === "string" && rawPath.trim()
+        ? rawPath
+        : typeof rawFolder === "string" && rawFolder.trim()
+          ? rawFolder
+          : "profile";
+
+    const folder = folderValue
+      .replace(/\\/g, "/")
+      .split("/")
+      .filter(Boolean)
+      .map(part => part.replace(/[^a-zA-Z0-9_-]/g, "_"))
+      .join("/");
+
+    const isImage = file.type.startsWith("image/");
+    const isVideo = file.type.startsWith("video/");
+    const resourceType = isImage
+      ? "image"
+      : isVideo
+        ? "video"
+        : "raw";
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
-    // PDF => raw, Images => image
-    const isPdf =
-      file.type === "application/pdf" ||
-      file.name.toLowerCase().endsWith(".pdf");
+    const safeName = file.name
+      .replace(/\.[^/.]+$/, "")
+      .replace(/[^a-zA-Z0-9_-]/g, "_")
+      .slice(0, 100);
 
-    const resourceType = isPdf ? "raw" : "image";
+    const publicId =
+      resourceType === "raw"
+        ? `${safeName || "file"}_${Date.now()}${file.name.match(/\.[^/.]+$/)?.[0] || ""}`
+        : `${safeName || "file"}_${Date.now()}`;
 
     const result: any = await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         {
-  folder,
-  resource_type: resourceType,
-
-  public_id: file.name,
-  use_filename: true,
-  unique_filename: false,
-  overwrite: true,
-},
-        (error, result) => {
+          folder,
+          resource_type: resourceType,
+          public_id: publicId,
+          overwrite: false,
+        },
+        (error, uploaded) => {
           if (error) reject(error);
-          else resolve(result);
+          else resolve(uploaded);
         }
       );
 
       stream.end(buffer);
     });
-
-    console.log("FILE:", file.name);
-    console.log("TYPE:", file.type);
-    console.log("RESOURCE TYPE:", result.resource_type);
-    console.log("SECURE URL:", result.secure_url);
-    console.log("PUBLIC ID:", result.public_id);
-    console.log("FORMAT:", result.format);
 
     return Response.json({
       url: result.secure_url,
@@ -74,7 +96,7 @@ export async function POST(req: Request) {
       original_filename: result.original_filename,
     });
   } catch (err: any) {
-    console.log("UPLOAD ERROR:", err);
+    console.error("UPLOAD ERROR:", err);
 
     return Response.json(
       { error: err.message || "Upload failed" },
