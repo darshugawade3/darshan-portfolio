@@ -1,4 +1,7 @@
+
 import { v2 as cloudinary } from "cloudinary";
+
+export const runtime = "nodejs";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
@@ -8,30 +11,44 @@ cloudinary.config({
 
 export async function POST(req: Request) {
   try {
-    const { public_id } = await req.json();
+    const { public_id, resource_type } = await req.json();
 
-    console.log("DELETE REQUEST:", public_id);
-
-    if (!public_id) {
+    if (
+      typeof public_id !== "string" ||
+      !public_id.trim() ||
+      !["image", "raw", "video"].includes(resource_type)
+    ) {
       return Response.json(
-        { error: "public_id required" },
+        { error: "Valid public_id and resource_type required" },
         { status: 400 }
       );
     }
 
-    const result = await cloudinary.uploader.destroy(public_id);
+    const result = await cloudinary.uploader.destroy(
+      public_id,
+      {
+        resource_type,
+        type: "upload",
+        invalidate: true,
+      }
+    );
+
+    if (result.result !== "ok" && result.result !== "not found") {
+      return Response.json(
+        { error: "Cloudinary could not delete this file" },
+        { status: 500 }
+      );
+    }
 
     return Response.json({
       success: true,
-      result,
+      result: result.result,
     });
   } catch (err: any) {
-    console.log("DELETE ERROR:", err);
+    console.error("CLOUDINARY DELETE ERROR:", err);
 
     return Response.json(
-      {
-        error: err.message || "Delete failed",
-      },
+      { error: err.message || "Delete failed" },
       { status: 500 }
     );
   }
